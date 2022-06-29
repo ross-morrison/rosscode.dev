@@ -5,10 +5,16 @@ import { Container, Divider, Typography } from "@mui/material";
 const Home: NextPage = () => {
   return (
     <Container maxWidth="lg">
-      <Typography gutterBottom variant="h4">Welcome to my homepage!</Typography>
+      <Typography gutterBottom variant="h4">
+        Welcome to my homepage!
+      </Typography>
       <Divider />
       <Typography mt={2} variant="body1">
         This app was created using Next.js!
+      </Typography>
+      <Divider />
+      <Typography mt={2} variant="body1">
+        This is the preview page for a pull request!
       </Typography>
     </Container>
   );
