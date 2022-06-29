@@ -19,3 +19,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HOMEPAGE_6F16D }}'
           channelId: live
           projectId: homepage-6f16d
+          entryPoint: ./homepage
