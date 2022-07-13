@@ -16,8 +16,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { NavbarLink, NAVBAR_LINKS } from "./config";
+import Link from "./default/Link";
+import Tooltip from "@mui/material/Tooltip";
 
 const drawerWidth = 240;
 
@@ -94,6 +95,9 @@ type MiniDrawerProps = {
   title: string;
 };
 
+/**
+ * @author Ross Morrison <ross@rosscode.dev>
+ */
 export default function MiniDrawer(props: MiniDrawerProps) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -131,7 +135,7 @@ export default function MiniDrawer(props: MiniDrawerProps) {
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <Typography variant="h6" noWrap>
-          🧑‍💻rosscode.dev
+            🧑‍💻rosscode.dev
           </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -143,52 +147,33 @@ export default function MiniDrawer(props: MiniDrawerProps) {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Home"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+          {NAVBAR_LINKS.map((link: NavbarLink, index) => (
+            <ListItem key={link.name} disablePadding sx={{ display: "block" }}>
+              <Tooltip title={link.name} placement="right" disableHoverListener={open}>
+                <ListItemButton
+                  component={Link}
+                  href={link.url}
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["Sign In", "Register"].map((text, index) => (
-            //TODO: convert these to menu objects and include custom icon for each
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {link.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={link.name}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </Tooltip>
             </ListItem>
           ))}
         </List>

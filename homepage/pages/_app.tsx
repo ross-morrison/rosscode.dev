@@ -7,6 +7,7 @@ import theme from "../styles/theme/theme";
 import "../styles/globals.css";
 import MiniDrawer from "../components/drawer";
 import { useRouter } from "next/router";
+import Footer from "../components/footer";
 
 const ClientEmotionCache = emotionCache();
 
@@ -14,6 +15,9 @@ interface CustomAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
+/**
+ * @author Ross Morrison <ross@rosscode.dev>
+ */
 function CustomApp({
   Component,
   emotionCache = ClientEmotionCache,
@@ -27,6 +31,7 @@ function CustomApp({
         <MiniDrawer title={pageProps.name}>
           <Component {...pageProps} />
         </MiniDrawer>
+        <Footer />
       </ThemeProvider>
     </CacheProvider>
   );

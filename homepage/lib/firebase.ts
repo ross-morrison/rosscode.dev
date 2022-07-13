@@ -4,6 +4,10 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
+/**
+ * @author Ross Morrison <ross@rosscode.dev>
+ */
+
 const firebaseConfig = {
   apiKey: "AIzaSyDsH8AaBWinCTxHAlyQbc6HRyzkqXsMTiE",
   authDomain: "homepage-6f16d.firebaseapp.com",

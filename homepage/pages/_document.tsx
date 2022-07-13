@@ -4,6 +4,9 @@ import createEmotionServer from "@emotion/server/create-instance";
 import theme from "../styles/theme/theme";
 import emotionCache from "../lib/emotionCache";
 
+/**
+ * @author Ross Morrison <ross@rosscode.dev>
+ */
 export default class MyDocument extends Document {
   render() {
     return (
